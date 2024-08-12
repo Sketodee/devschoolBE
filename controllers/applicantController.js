@@ -23,9 +23,16 @@ const apply = async (req, res) => {
     }
 }
 
+const getAllApplicants = async (req, res) => {
+    const applicants = await Applicant.find();
+    if(!applicants) return res.sendStatus(204)
+      res.json(response(true, "Applicants fetched", null, applicants))
+  }
+
 
 
 
 module.exports= {
-    apply
+    apply, 
+    getAllApplicants
 }
